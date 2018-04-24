@@ -1,0 +1,62 @@
+/* pages/user/user.wxss */
+.container {
+  display: flex;
+  background-color: #fefefd;
+  padding: 45rpx 35rpx;
+  position: relative;
+}
+.avator {
+  height: 130rpx;
+  width: 130rpx;
+  border-radius: 130rpx;
+}
+.name {
+  margin-top: 10rpx;
+  margin-left: 50rpx;
+  font-size: 20px;
+}
+.container::before {
+  content: '';
+  left: 0;
+  top: 2rpx;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 20rpx;
+  box-shadow: 0px -10px 5px #888888;
+  background-color: #edf1f1;
+}
+.container::after {
+  content: '';
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 20rpx;
+  background-color: #edf1f1;
+}
+.setting-sprite {
+  width: 45rpx;
+  height: 45rpx;
+}
+.setting{
+  position: relative;
+  display: flex;
+  padding: 30rpx 35rpx;
+}
+.setting::after {
+  width: 100%;
+  height: 1px;
+  content: '';
+  display: block;
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  background-color: #f1f1f0;
+}
+.setting-text {
+  color: #58595a;
+  font-size: 16px;
+  margin-left: 45rpx;
+}

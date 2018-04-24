@@ -1,0 +1,15 @@
+<template name="tweet">
+  <view class="tweet-content">
+    <view class="tweet-content-header">
+      <image class="tweet-avator" src="{{avator}}"></image>
+      <view class="tweet-name">{{name}}</view>
+    </view>
+    <text class="tweet-descrption">{{tweet}}</text>
+    <view class="operate">
+      <image class="operate-image" src="../../resourse/like.png"/>
+      <image class="operate-image" src="../../resourse/comment.png"/>
+    </view>
+    <view class="divider"></view>
+    <input type="text" class="tweet-input" placeholder="评论" placeholder-class="tweet-placeholder"/>
+  </view>
+</template>

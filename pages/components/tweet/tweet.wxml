@@ -1,0 +1,8 @@
+<!--pages/components/tweet/tweet.wxml-->
+<view class="content">
+  <view class="content-header">
+    <image class="avator"></image>
+    <view class="name"></view>
+  </view>
+  <text class="descrption">{{}}</text>
+</view>

@@ -1,0 +1,51 @@
+/* pages/consult/consult.wxss */
+page {
+  background-color: #b1b9c2;
+}
+
+.content-container {
+  margin-top: 10rpx;
+  background-color: #ffffff;
+  color: #aaaaab;
+  display:flex;
+  margin: 10rpx 15rpx 0 15rpx;
+  padding:20rpx;
+  height: 180rpx;
+}
+.avatar {
+  height: 90rpx;
+  width:90rpx;
+  border-radius: 55%;
+}
+.content {
+  margin-left: 30rpx;
+  width:80%;
+}
+.psy-name-container {
+  display:flex;
+  justify-content:space-between;
+}
+.psy-name {
+  color: #000000;
+  font-size:16px;
+}
+.psy-more{
+  font-size: 12px;
+  padding: 6rpx;
+}
+.descrption {
+  font-size:14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height:150rpx;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  word-break:break-all;
+}
+.arrow-img {
+  height: 20rpx;
+  width: 20rpx;
+  z-index: 2;
+  overflow: visible;
+}

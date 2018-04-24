@@ -1,0 +1,46 @@
+/* pages/psy/psy.wxss */
+.container{
+  position: relative;
+  text-align: center;
+}
+.bg {
+  position: absolute;
+  width: 100vw;
+  height: 340rpx;
+  left: 0;
+  z-index: -1;
+}
+.avator {
+  height: 250rpx;
+  width: 250rpx;
+  border-radius: 50%;
+  margin-top:225rpx;
+}
+.name {
+  font-size: 30px;
+}
+.content {
+  margin: 0 40rpx 80rpx 40rpx;
+}
+.descrption {
+  color:#8f8f8e;
+  display:block;
+  word-break:break-all;
+  text-align:left;
+}
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 50rpx 0 50rpx;
+}
+.btn {
+  background-color:#00897b;
+  color: #ffffff;
+  height: 90rpx;
+  width: 240rpx;
+  margin: 0;
+  box-shadow: 0px 3px 3px #888888;
+}
+.btn-faved {
+  background-color: #8f8f8e;
+}

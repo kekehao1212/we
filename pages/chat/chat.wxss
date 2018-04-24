@@ -1,0 +1,150 @@
+/* pages/chat/chat.wxss */
+page {
+  background-color: #f2f3f5;
+}
+.header{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  width: 100%;
+  line-height: 80rpx;
+  height: 80rpx;
+  opacity: 0.8;
+  background-color: #fefefd;
+}
+.endChat{
+  position:absolute;
+  top: 15rpx;
+  right:15rpx;
+  float:right;
+  text-align: center;
+  padding-left:30rpx;
+  height: 50rpx;
+  width: 200rpx;
+  color: #868685;
+  background-color: #e7e7e6;
+  font-size: 14px;
+  line-height: 50rpx;
+  border-radius: 50rpx;
+}
+.endChat::before{
+  content: '';
+  left: 0;
+  position: absolute;
+  height: 50rpx;
+  width: 50rpx;
+  border-radius: 50%;
+  background-color: #868685;
+}
+.name {
+  font-size:20px;
+  color: #797a7b;
+  text-align: center;
+}
+.message-container {
+  margin-top:60rpx;
+  display: inline-block;
+}
+.rec-message {
+  background-color: #ffffff;
+  display: block;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  font-size:15px;
+  max-width: 570rpx;
+  position: relative;
+  box-sizing: border-box;
+  line-height: 30px;
+  margin-left: 40rpx;
+  border-radius: 20rpx;
+}
+.rec-message::before {
+  content: '';
+  z-index: 1;
+  display: block;
+  position: absolute;
+  left: -14rpx;
+  width: 0; 
+  height: 0; 
+  border-top: 16rpx solid transparent; 
+  border-right: 16rpx solid #ffffff; 
+  border-bottom: 16rpx solid transparent; 
+}
+.avator {
+
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+}
+.rec-message-container {
+  display: flex;
+  margin: 45rpx 28rpx 45rpx 28rpx;
+}
+.sen-message-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 45rpx 28rpx 45rpx 28rpx;
+}
+.sen-message {
+  order: -1;
+  background-color: #ffffff;
+  display: block;
+  padding: 20rpx 30rpx 20rpx 30rpx;
+  font-size:15px;
+  max-width: 570rpx;
+  position: relative;
+  box-sizing: border-box;
+  line-height: 30px;
+  margin-right: 40rpx;
+  border-radius: 20rpx;
+}
+.sen-message::before {
+  content: '';
+  z-index: 1;
+  display: block;
+  position: absolute;
+  right: -14rpx;
+  width: 0; 
+  height: 0; 
+  border-top: 16rpx solid transparent; 
+  border-left: 16rpx solid #ffffff; 
+  border-bottom: 16rpx solid transparent; 
+}
+.textarea-container {
+  position: fixed;
+  margin: 10rpx;
+  bottom: 0;
+  background-color: #f9f9f8;
+  width: 97%;
+}
+.textarea {
+  width:91%;
+  max-height: 200rpx;
+  font-size: 16px;
+  border-radius: 10rpx;
+}
+.send {
+  position: absolute;
+  bottom: 80rpx;
+  color: #017bf9;
+  font-size: 16px;
+  right: 10rpx;
+}
+.footer {
+  height: 100rpx;
+  width: 100%;
+}
+.operate-container { 
+  display: flex;
+  justify-content: space-around;
+}
+.operate-sprite {
+  height: 50rpx;
+  width: 50rpx;
+}
+.divider {
+  width: 100%;
+  margin-top: 10rpx;
+  background-color: #c4c9cf;
+  height: 1px;
+}

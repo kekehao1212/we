@@ -1,0 +1,15 @@
+<!--pages/psy/psy.wxml-->
+<view class="container">
+  <image src="{{psy.avator}}"  class="avator"/>    
+  <image src="../../resourse/bg.jpg" class="bg"/>
+  <view class="content">
+    <view class="name">
+      {{psy.name}}
+    </view>
+    <text class="descrption">{{psy.descrption}}</text>
+  </view>
+  <view class="btn-container {{}}">
+    <button class="btn">关注</button>
+    <button class="btn" bindtap="chat">开始咨询</button>
+  </view>
+</view>

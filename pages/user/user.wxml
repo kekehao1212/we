@@ -1,0 +1,31 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <image class="avator" src="../../resourse/img.png"/>
+  <view class="name">小李子</view>
+</view>
+<view class="setting-container">
+  <view class="setting">
+    <image class="setting-sprite" src="../../resourse/test.png"/>
+    <view class="setting-text">
+      心理测试
+    </view>
+  </view>
+  <view class="setting">
+    <image class="setting-sprite" src="../../resourse/favor.png"/>
+    <view class="setting-text">
+    我的收藏
+    </view>
+  </view>
+  <view class="setting">
+    <image class="setting-sprite" src="../../resourse/message.png"/>
+    <view class="setting-text">
+    我的通知
+    </view>
+  </view>
+  <view class="setting">
+    <image class="setting-sprite" src="../../resourse/help.png"/>
+    <view class="setting-text">
+    帮助与反馈
+    </view>
+  </view>
+</view>

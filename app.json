@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/consult/consult",
+    "pages/tweets/tweets",
+    "pages/user/user",
+    "pages/psy/psy",
+    "pages/chat/chat"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "backgroundColor": "#fff",
+    "selectedColor": "#f0eb90",
+    "list": [
+      {
+        "pagePath": "pages/tweets/tweets",
+        "iconPath": "resourse/tweets.png",
+        "selectedIconPath": "resourse/tweetsChosen.png",
+        "text": "动态"
+      },
+      {
+        "pagePath": "pages/consult/consult",
+        "iconPath": "resourse/consult.png",
+        "selectedIconPath": "resourse/consultChosen.png",
+        "text": "咨询"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "iconPath": "resourse/user.png",
+        "selectedIconPath": "resourse/userChosen.png",
+        "text": "个人"
+      }
+    ]
+  }
+}

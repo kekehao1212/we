@@ -1,0 +1,87 @@
+.topTabBar {
+  padding: 20rpx 40rpx;
+  height: 60rpx;
+  background-color: #ffffff;
+}
+.topTabBar-container {
+  display:flex;
+  justify-content:center;
+  background-color:#f1f3f4;
+}
+
+.topTabBar-btn{
+  line-height: 60rpx;
+  font-size: 14px;
+  color: #0069fd;
+  width: 220rpx;
+  text-align:center;
+  border: 1px solid #0069fd;
+  border-collapse: collapse;
+}
+.active-btn {
+  color:#ffffff;
+  background-color: #0069fd;
+}
+
+.topTabBar-container :nth-child(2) {
+  border-right: 0;
+  border-left: 0;
+}
+.topTabBar-container :nth-child(1) {
+  border-radius:15rpx 0 0 15rpx;
+}
+.topTabBar-container :nth-child(3) {
+  border-radius: 0 15rpx 15rpx 0;
+}
+
+.tweet-content{
+  background: #fefefd;
+  padding: 30rpx 10rpx 20rpx 10rpx;
+  margin: 15rpx 0 15rpx 0;
+}
+.tweet-content-header {
+  display: flex;
+}
+.tweet-avator{
+  height: 80rpx;
+  width: 80rpx;
+  border-radius: 50%;
+  margin-left:8rpx;
+}
+.tweet-descrption {
+  display:block;
+  word-break:break-all;
+  width:98%;
+  font-size:15px;
+}
+.tweet-name{
+  margin-left:20rpx;
+  font-size: 16px;
+}
+.operate-image{
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 20rpx 0 20rpx;
+}
+.operate {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20rpx;
+}
+.divider{
+  height: 1px;
+  width: 100%;
+  margin-bottom: 20rpx;
+  background-color:#f1f1f0;
+}
+.tweet-input{
+  height: 60rpx;
+  background-color: #f6f6f5;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  font-size:14px;
+  padding-left: 20rpx;
+}
+.tweet-placeholder {
+  color:#b4b4b3;
+}

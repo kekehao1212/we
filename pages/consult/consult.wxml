@@ -1,0 +1,24 @@
+<view class=".topTabBar">
+  <view class="topTabBar-container">
+    <view wx:for="{{topTabBar}}" data-index="{{index}}" wx:key="item.text" bindtap="changeTopTab" class="topTabBar-btn {{item.isActive? 'active-btn' : ''}}">
+        {{item.text}}
+    </view>
+  </view>  
+</view>
+
+<view class="content-container" wx:for="{{psy[activeIndex]}}" wx:key="index">
+  <image src="{{item.avatar}}" class="avatar"/>
+  <view class="content">
+    <view class="psy-name-container">
+      <view class="psy-name">
+        {{item.name}}
+      </view>
+      <view class="psy-more" bindtap="toPsy">
+        详情
+        <image class="arrow-img" src="../../../resourse/arrowRight.png" />
+      </view>
+    </view>
+    <text class="descrption">{{item.descrption}}</text>
+  </view>
+</view>
+
