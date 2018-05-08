@@ -4,7 +4,9 @@
     "pages/tweets/tweets",
     "pages/user/user",
     "pages/psy/psy",
-    "pages/chat/chat"
+    "pages/chat/chat",
+    "pages/publish/publish",
+    "pages/signUp/signUp"
   ],
   "window": {
     "backgroundTextStyle": "light",

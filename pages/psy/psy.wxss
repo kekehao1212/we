@@ -34,13 +34,33 @@
   margin: 0 50rpx 0 50rpx;
 }
 .btn {
+  position:relative;
   background-color:#00897b;
   color: #ffffff;
   height: 90rpx;
   width: 240rpx;
   margin: 0;
   box-shadow: 0px 3px 3px #888888;
+  overflow: visible;
 }
 .btn-faved {
   background-color: #8f8f8e;
+}
+.follow {
+  position: absolute;
+  height: 80rpx;
+  width: 80rpx;
+  left: 80rpx;
+  animation: follow 1.25s;
+  z-index: -1;
+}
+.follow-hidden {
+  visibility: hidden;
+}
+@keyframes follow {
+  0%{top: 0rpx;}
+  25%{top: -200rpx;}
+  50%{top: 0rpx;}
+  75%{top: -100rpx;}
+  100%{top: 0rpx;}
 }

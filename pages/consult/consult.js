@@ -1,4 +1,8 @@
 // pages/consult/consult.js
+import we from '../../utils/wxPromise/index.js'
+import url from '../../utils/url/index.js'
+var app = getApp()
+import regeneratorRuntime from '../../libs/regenerator-runtime/runtime-module.js'
 Page({
 
   /**
@@ -17,31 +21,31 @@ Page({
         isActive: false,
       }
     ],
-    psy: [[{
-      avatar:'../../resourse/img.png',
+    psys: [[{
+      avator:'../../resourse/img.png',
       name: '小李子',
       descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
     }, {
-      avatar:'../../../resourse/img.png',
+      avator:'../../../resourse/img.png',
       name: '小李子',
       descrption: 'xxx 77x fdsfs\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
     }],[
       {
-        avatar:'../../resourse/img.png',
+        avator:'../../resourse/img.png',
         name: '小李子2',
         descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       }, {
-        avatar:'../../../resourse/img.png',
+        avator:'../../../resourse/img.png',
         name: '小李子2',
         descrption: 'xxx 77x 阿萨德的分手费\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       }
     ],[
       {
-        avatar:'../../resourse/img.png',
+        avator:'../../resourse/img.png',
         name: '小李子3',
         descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       }, {
-        avatar:'../../../resourse/img.png',
+        avator:'../../../resourse/img.png',
         name: '小李子3',
         descrption: 'xxx 77x 规范的股份的规定发给对方\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
       }
@@ -51,9 +55,23 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
   
+  onLoad: async function (options) {
+     let {data:{results}} = await we.request({
+      url: url.consult,
+      header: {WX_SESSIONID: app.globalData.sessionId}
+    })
+    let psys = [[],[],[]]
+    results.map(item => { 
+      item.avator = `${url.domain}/api/users/${item.id}/avator`
+      psys[item.type].push(item)
+    })
+    this.setData({
+      psys: psys
+    })
+    console.log(psys)
   },
+
   changeTopTab: function (e) {
     let topTabBar = this.data.topTabBar
     topTabBar[this.data.activeIndex].isActive = false
@@ -63,7 +81,10 @@ Page({
       'activeIndex': e.target.dataset.index
     })
   },
-  toPsy: function () {
+  toPsy: function (e) {
+    let index = e.target.dataset.index
+    app.globalData.psy = this.data.psys[this.data.activeIndex][index]
+    console.log(app.globalData.psy)
     wx.navigateTo({
       url: '../psy/psy',
     })

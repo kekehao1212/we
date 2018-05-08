@@ -1,4 +1,8 @@
 // pages/message/message.js
+import we from '../../utils/wxPromise/index.js'
+import url from '../../utils/url/index.js'
+var app = getApp()
+import regeneratorRuntime from '../../libs/regenerator-runtime/runtime-module.js'
 Page({
 
   /**
@@ -58,8 +62,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: async function (options) {
+    we.request({
+      url: url.tweets,
+      header: app.globalData.header
+    }).then((res) => {
+      let {data:{results}} = res
+      let temp = this.data.tweets
+      temp[1] = results
+      this.setData({
+        tweets: temp
+      })
+    })
+
+    we.request({
+      url: url.articles,
+      header: app.globalData.header
+    }).then((res) => {
+      let {data:{results}} = res
+      let temp = this.data.tweets
+      temp[2] = results
+      this.setData({
+        tweets: temp
+      })
+    })
   },
   
   changeTopTab: function (e) {

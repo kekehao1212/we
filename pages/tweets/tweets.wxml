@@ -1,8 +1,8 @@
 <!--pages/message/message.wxml-->
 <import src="../template/tweet" />
-<btn class="publish-btn">
+<navigator url="../publish/publish" class="publish-btn">
   <image src="../../resourse/publish.png" class="publish-image"/>
-</btn>
+</navigator>
 <view class=".topTabBar">
   <view class="topTabBar-container">
     <view wx:for="{{topTabBar}}" data-index="{{index}}" bindtap="changeTopTab" wx:key="item.text" class="topTabBar-btn {{item.isActive? 'active-btn' : ''}}">

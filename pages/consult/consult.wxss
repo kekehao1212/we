@@ -12,7 +12,7 @@ page {
   padding:20rpx;
   height: 180rpx;
 }
-.avatar {
+.avator {
   height: 90rpx;
   width:90rpx;
   border-radius: 55%;

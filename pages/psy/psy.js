@@ -1,4 +1,8 @@
 // pages/psy/psy.js
+import we from '../../utils/wxPromise/index.js'
+import url from '../../utils/url/index.js'
+var app = getApp()
+import regeneratorRuntime from '../../libs/regenerator-runtime/runtime-module.js'
 Page({
 
   /**
@@ -8,16 +12,32 @@ Page({
     psy: {
       name: '小李子',
       avator: '../../resourse/img.png',
-      descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    }
+      about: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+    },
+    following: null,
+    displayFollowAnimation: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: async function (options) {
+    this.setData({
+      psy: app.globalData.psy
+    })
+    let id = this.data.psy.id
+    console.log(id)
+    let {data:{following, id: followingId}} = await we.request({
+      url: `${url.domain}/api/follows/followee/${id}`,
+      header: app.globalData.header
+    })
+    this.followingId = followingId
+    this.setData({
+      following: following
+    })
+    console.log(following)
   },
+  followingId: null,
   chat: function () {
     wx.navigateTo({
       url: '../chat/chat'
@@ -26,6 +46,37 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
+  toggleFollow: async function () {
+    if (this.data.following === false) {
+      let { data: { id } } = await we.request({
+        url: url.follow,
+        header: app.globalData.header,
+        method: 'POST',
+        data: {
+          followeeId: this.data.psy.id
+        }
+      })
+      this.followingId = id
+      this.setData({
+        displayFollowAnimation: true
+      })
+      setTimeout(() => {
+        this.setData({
+          following: true,
+          displayFollowAnimation:false
+        })
+      }, 1500)
+    } else {
+      we.request({
+        method:'DELETE',
+        header: app.globalData.header,
+        url: `${url.domain}/api/follows/${this.followingId}`,
+      })
+      this.setData({
+        following: false
+      })
+    }
+  },
   onReady: function () {
   
   },

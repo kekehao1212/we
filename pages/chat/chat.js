@@ -17,14 +17,50 @@ Page({
       avator: '../../resourse/img.png',
       content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
       type: 'rec'
-    }]
+    },{
+      avator: '../../resourse/img.png',
+      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
+      type: 'rec'
+    },{
+      avator: '../../resourse/img.png',
+      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
+      type: 'rec'
+    },{
+      avator: '../../resourse/img.png',
+      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
+      type: 'rec'
+    }],
+    cursorSpacing: null
   },
-
+  recorderManager: null,
+  startRecord: false,
+  innerAudioContext: null,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    this.recorderManager = wx.getRecorderManager()
+    this.innerAudioContext = wx.createInnderAudioContext()
+    this.recorderManager.onStop(function (res) {
+      console.log(res)
+    })
+  },
+
+  getRecord: function () {
+    if (this.startRecord) {
+      this.startRecord = false
+      this.recorderManager.stop()
+    } else {
+      this.startRecord = true
+      this.recorderManager.start({
+        duration: 600000,
+        format: 'mp3'
+      })
+    }
+  },
+
+  playAudio: function () {
+    innerAudioContext.src = ''
   },
 
   /**

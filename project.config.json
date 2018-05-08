@@ -1,8 +1,8 @@
 {
 	"description": "项目配置文件。",
 	"setting": {
-		"urlCheck": true,
-		"es6": false,
+		"urlCheck": false,
+		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
@@ -54,6 +54,18 @@
 					"id": -1,
 					"name": "user",
 					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "publish",
+					"pathName": "pages/publish/publish",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "signUp",
+					"pathName": "pages/signUp/signUp",
 					"query": ""
 				}
 			]

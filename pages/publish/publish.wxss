@@ -1,0 +1,9 @@
+/* pages/publish/publish.wxss */
+.publish-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding:20rpx 20rpx;
+  font-size: 15px;
+  min-height:400rpx;
+  background-color: #ffffff;
+}

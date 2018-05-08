@@ -1,39 +1,56 @@
 //app.js
+import we from './utils/wxPromise/index.js'
+const regeneratorRuntime = require('./libs/regenerator-runtime/runtime-module.js')
+import url from './utils/url/index.js'
 App({
-  onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
+  onLaunch: function() {
+    this.loginInit()
+  },
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+  loginInit: async function() {
+    var sessionId = wx.getStorageSync('sessionId') || '' 
+    if (sessionId) {
+      var {statusCode, header:{WX_SESSION_ID: sessionId}} = await this.login({ WX_SESSION_ID: sessionId })
+      this.globalData.sessionId = sessionId
+      this.globalData.header.WX_SESSION_ID = sessionId
+      if (statusCode === 403) {
+        let { code } = await we.login()
+        var {statusCode, header:{WX_SESSION_ID: sessionId}} = await this.login({ WX_CODE: code })
+        await this.storeSessionId(sessionId)
       }
-    })
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+    } else {
+      let { code } = await we.login()
+      var {statusCode, header:{WX_SESSION_ID: sessionId}} = await this.login({ WX_CODE: code })
+      await this.storeSessionId(sessionId)
+    }
+    if (statusCode === 404) {
+      we.navigateTo({
+        url: './pages/signUp/signUp'
+      })
+    }
+  },
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
-        }
-      }
+  login: function(header) {
+    return we.request({
+      url: url.login,
+      method: 'POST',
+      header: header
     })
   },
+
+  storeSessionId: async function(sessionId) {
+    console.log('storeSessionId', sessionId)
+    this.globalData.sessionId = sessionId
+    this.globalData.header.WX_SESSION_ID = sessionId
+    console.log(this.globalData.sessionId)
+    we.setStorage({
+      key: 'sessionId',
+      data: sessionId
+    })
+    return Promise.resolve()
+  },
   globalData: {
-    userInfo: null
+    header: {WX_SESSION_ID: null},
+    sessionId: null
   }
 })

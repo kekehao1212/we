@@ -1,0 +1,11 @@
+<!--pages/signUp/signUp.wxml-->
+<view class="avator-container" bindtap="chooseAvator">
+  <image src="{{avator}}" class="{{avatorClass}}" mode="widthFix"/>
+  <view>头像</view>
+</view>
+<form class="container" bindsubmit="register">
+  <label for="userName" class="userName-label">用户名
+    <input type="text" auto-focus id="userName" class="userName-input" name="userName"/>
+  </label>
+  <button formType="submit">确认</button>
+</form>

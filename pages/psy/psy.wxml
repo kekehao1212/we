@@ -6,10 +6,12 @@
     <view class="name">
       {{psy.name}}
     </view>
-    <text class="descrption">{{psy.descrption}}</text>
+    <text class="descrption">{{psy.about}}</text>
   </view>
-  <view class="btn-container {{}}">
-    <button class="btn">关注</button>
+  <view class="btn-container">
+    <button class="{{following? 'btn btn-faved': 'btn'}}" bindtap="toggleFollow">{{following? '已关注': '关注'}} 
+      <image src="../../resourse/follow.png" class="{{displayFollowAnimation? 'follow': 'follow-hidden'}}"/>
+    </button>
     <button class="btn" bindtap="chat">开始咨询</button>
   </view>
 </view>

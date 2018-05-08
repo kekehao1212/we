@@ -14,6 +14,7 @@ page{
   position: fixed;
   bottom: 20rpx;
   right: 20rpx;
+  border-radius: 50%;
 }
 .publish-image{
   height:100rpx;
