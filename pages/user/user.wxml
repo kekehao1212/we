@@ -1,7 +1,7 @@
 <!--pages/user/user.wxml-->
 <view class="container">
-  <image class="avator" src="../../resourse/img.png"/>
-  <view class="name">小李子</view>
+  <image class="avator" src="{{user.image}}"/>
+  <view class="name">{{user.name}}</view>
 </view>
 <view class="setting-container">
   <view class="setting">

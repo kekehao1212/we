@@ -2,14 +2,28 @@
   <view class="tweet-content">
     <view class="tweet-content-header">
       <image class="tweet-avator" src="{{avator}}"></image>
-      <view class="tweet-name">{{name}}</view>
+      <view class="tweet-name">{{post.user.name}}</view>
     </view>
-    <text class="tweet-descrption">{{tweet}}</text>
+    <text class="tweet-descrption">{{content}}</text>
     <view class="operate">
       <image class="operate-image" src="../../resourse/like.png"/>
       <image class="operate-image" src="../../resourse/comment.png"/>
     </view>
     <view class="divider"></view>
-    <input type="text" class="tweet-input" placeholder="评论" placeholder-class="tweet-placeholder"/>
+    <view class="comment">
+    </view>
+    <view class="comment-container">
+      <view class="touch-comment" bindtap="getComment" data-postid="{{post.id}}">    
+        <image class="arrowDown-image" src = "../../resourse/arrowDown.png"/>
+        <view class="view-comment">查看评论</view>
+      </view>
+    </view>
+    <form bindsubmit="comment">
+      <! --<switch class="switch" name="anonymous" type="checkbox" checked="false">匿名评论</switch>
+       -->
+      <input type="text" name="inputVal" class="tweet-input" placeholder="评论" placeholder-class="tweet-placeholder">
+        <button plain data-postid="{{post.id}}" style="border: 0px;color:#017bf9;" class="comment-btn" form-type="submit">发表</button>
+      </input>
+    </form>
   </view>
 </template>

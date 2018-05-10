@@ -4,7 +4,7 @@
   <image src="../../resourse/bg.jpg" class="bg"/>
   <view class="content">
     <view class="name">
-      {{psy.name}}
+      {{psy.user.name}}
     </view>
     <text class="descrption">{{psy.about}}</text>
   </view>

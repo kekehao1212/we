@@ -71,7 +71,7 @@
 .divider{
   height: 1px;
   width: 100%;
-  margin-bottom: 20rpx;
+  margin-bottom: 10rpx;
   background-color:#f1f1f0;
 }
 .tweet-input{
@@ -79,8 +79,10 @@
   background-color: #f6f6f5;
   margin-left: 10rpx;
   margin-right: 10rpx;
-  font-size:14px;
+  font-size: 14px;
   padding-left: 20rpx;
+  position: relative;
+  padding-right: 80rpx;
 }
 .tweet-placeholder {
   color:#b4b4b3;

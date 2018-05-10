@@ -10,17 +10,20 @@ App({
   loginInit: async function() {
     var sessionId = wx.getStorageSync('sessionId') || '' 
     if (sessionId) {
-      var {statusCode, header:{WX_SESSION_ID: sessionId}} = await this.login({ WX_SESSION_ID: sessionId })
+      var {statusCode, header:{WX_SESSION_ID: sessionId},data} = await this.login({ WX_SESSION_ID: sessionId })
       this.globalData.sessionId = sessionId
       this.globalData.header.WX_SESSION_ID = sessionId
+      this.globalData.user = data
       if (statusCode === 403) {
         let { code } = await we.login()
-        var {statusCode, header:{WX_SESSION_ID: sessionId}} = await this.login({ WX_CODE: code })
+        var {statusCode, header:{WX_SESSION_ID: sessionId}, data} = await this.login({ WX_CODE: code })
+        this.globalData.user = data
         await this.storeSessionId(sessionId)
       }
     } else {
       let { code } = await we.login()
-      var {statusCode, header:{WX_SESSION_ID: sessionId}} = await this.login({ WX_CODE: code })
+      var {statusCode, header:{WX_SESSION_ID: sessionId}, data} = await this.login({ WX_CODE: code })
+      this.globalData.user = data
       await this.storeSessionId(sessionId)
     }
     if (statusCode === 404) {
@@ -51,6 +54,7 @@ App({
   },
   globalData: {
     header: {WX_SESSION_ID: null},
-    sessionId: null
+    sessionId: null,
+    user: null
   }
 })

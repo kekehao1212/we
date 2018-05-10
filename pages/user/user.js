@@ -1,18 +1,30 @@
 // pages/user/user.js
+import we from '../../utils/wxPromise/index.js'
+import url from '../../utils/url/index.js'
+var app = getApp()
+import regeneratorRuntime from '../../libs/regenerator-runtime/runtime-module.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    user:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var user = app.globalData.user
+    if (!user.image) {
+      app.globalData.user.image = 
+      `${url.domain}/api/users/_/avator?sessionId=${app.globalData.sessionId}`
+    }
+    this.setData({
+      user: app.globalData.user
+    })
+    console.log(this.data.user)
   },
 
   /**

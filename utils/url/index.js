@@ -9,7 +9,9 @@ export default {
   articles: `${domain}/api/articles`,
   avator: `${domain}/api/users/_/avator`,
   domain: domain,
-  follow: `${domain}/api/follows`
+  follow: `${domain}/api/follows`,
+  notification: `${domain}/api/public-notifications`
+  // comment: `${url.domain}/api/posts/${postId}/comments`,
   // checkFollow: `${domain}/api/follows/followee${psyId}`
 }
 // 'https://neosphs.dev.de5.io/api/wx/student/login'
