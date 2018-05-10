@@ -44,7 +44,7 @@ page {
 .switch{
   font-size: 14px;
 }
-.comment-container {
+.view-comment-container {
   display: flex;
   align-items:center;
   flex-direction: column;
@@ -61,4 +61,17 @@ page {
 }
 .touch-comment{
   width: 200rpx;
+}
+.comments-container {
+  font-size: 12px;
+}
+.comment{
+  display: flex;
+  margin: 10rpx 5rpx; 
+}
+.comment-username{
+  color: #335691;
+}
+.rotate-arrowDown {
+  transform: rotate(180deg);
 }

@@ -20,7 +20,7 @@ Page({
       text: '关注',
       isActive: false,
     }],
-    tweets:[]
+    tweets:[],
   },
 
   /**
@@ -35,16 +35,23 @@ Page({
     }).then((res) => {
       console.log(res)
       let {data:{results}} = res
-      // for(let item of results) {
-      //   item.avator = `${url.domain}/api/users/${item.post.userId}/avator`
-      // }
+      let arr = []
+      for (let item of results) {
+        arr.push({
+          content: item.content,
+          title: item.title,
+          id: item.id
+          // avator : `${url.domain}/api/users/${item.post.userId}/avator`
+        })
+      }
       let temp = this.data.tweets
-      temp[0] = results
+      temp[0] = arr
       this.setData({
         tweets: temp
       })
+      console.log('推送',arr)
     })
-
+    
     //获取树洞
     we.request({
       url: url.tweets,
@@ -52,16 +59,26 @@ Page({
     }).then((res) => {
       console.log(res)
       let {data:{results}} = res
+      let arr = []
       for(let item of results) {
-        item.avator = `${url.domain}/api/users/${item.post.userId}/avator`
+        arr.push({
+          avator: `${url.domain}/api/users/${item.post.userId}/avator`,
+          content: item.content,
+          userName: item.post.user.name,
+          userId: item.post.userId,
+          anonymous: item.post.anonymous,
+          title: item.title,
+          postId: item.post.id
+        })
       }
       let temp = this.data.tweets
-      temp[1] = results
+      temp[1] = arr
       this.setData({
         tweets: temp
       })
+      console.log('树洞',arr)
     })
-
+    
     //获取关注文章
     we.request({
       url: url.articles,
@@ -69,11 +86,23 @@ Page({
     }).then((res) => {
       let {data:{results}} = res
       console.log(res)
+      let arr = []
+      for (let item of results) {
+        arr.push({
+          avator: item.avator,
+          content: item.content,
+          userName: item.post.user.name,
+          userId: item.post.user.id,
+          anonymous:item.post.anonymous,
+          postId: item.post.id
+        })
+      }
       let temp = this.data.tweets
-      temp[2] = results
+      temp[2] = arr
       this.setData({
         tweets: temp
       })
+      console.log('关注',arr)
     })
   },
   
@@ -88,7 +117,6 @@ Page({
   },
 
   comment: function (e) {
-    console.log('comment',e)
     let postId = e.detail.target.dataset.postid
     let inputVal = e.detail.value.inputVal
     we.request({
@@ -105,14 +133,39 @@ Page({
   },
   
   getComment: function (e) {
-    console.log(e)
+    var temp = this.data.tweets
     let postId = e.currentTarget.dataset.postid
-    we.request({
-      url: `${url.domain}/api/posts/${postId}/comments`,
-      header:app.globalData.header
-    }).then((res) => {
-      console.log(res)
-    })
+    let tweetIndex = e.currentTarget.dataset.tweetindex
+    if (temp[this.data.activeIndex][tweetIndex].showComment) {
+      temp[this.data.activeIndex][tweetIndex].showComment = false
+      this.setData({
+        tweets: temp
+      })
+      return 
+    } else {
+      we.request({
+        url: `${url.domain}/api/posts/${postId}/comments`,
+        header:app.globalData.header
+      }).then((res) => {
+        console.log(res)
+        let posts = res.data.posts
+        console.log(posts)
+        let comments = []
+        for (let item of posts) {
+          comments.push({
+            content: item.comment.content,
+            userName: item.post.user.name,
+            anonymous: item.post.anonymous
+          })
+        }
+        temp[this.data.activeIndex][tweetIndex].showComment = true
+        temp[this.data.activeIndex][tweetIndex].comments = comments
+        this.setData({
+          tweets: temp
+        })
+        console.log(comments)
+      })
+    }
   },
 
   /**

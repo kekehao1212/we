@@ -1,4 +1,4 @@
-// pages/signUp/signUp.js
+// pag/////////、、、、、？、、、、《<<es/signUp/signUp.js
 import we from '../../utils/wxPromise/index.js'
 import url from '../../utils/url/index.js'
 var app = getApp()
