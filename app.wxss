@@ -47,6 +47,7 @@
   width: 80rpx;
   border-radius: 50%;
   margin-left:8rpx;
+  margin-right:20rpx
 }
 .tweet-descrption {
   display:block;
@@ -55,7 +56,6 @@
   font-size:15px;
 }
 .tweet-name{
-  margin-left:20rpx;
   font-size: 16px;
 }
 .operate-image{
@@ -86,4 +86,8 @@
 }
 .tweet-placeholder {
   color:#b4b4b3;
+}
+.tweet-title {
+  font-size: 18px;
+  margin-bottom: 10rpx;
 }

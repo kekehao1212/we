@@ -29,6 +29,17 @@ Page({
       method: 'POST',
       header: app.globalData.header,
     })
+    wx.showModal({
+      title:'发布成功',
+      showCancel: false,
+      success: function(res) {
+        console.log(res)
+        if (res.confirm) {
+          wx.navigateBack()
+        }
+      }
+    })
+
     console.log(result)
   },
   /**

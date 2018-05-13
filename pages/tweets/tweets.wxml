@@ -11,5 +11,5 @@
   </view>
 </view>
 <view class="tweet-container">
-  <template is="tweet" wx:for="{{tweets[activeIndex]}}" wx:key="item.index" data="{{...item,index}}"/>
+  <template is="tweet" wx:for="{{tweets[activeIndex]}}" wx:key="item.index" data="{{...item,index,activeIndex}}"/>
 </view>

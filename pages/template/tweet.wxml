@@ -1,8 +1,8 @@
 <template name="tweet">
   <view class="tweet-content">
     <view class="tweet-content-header">
-      <image class="tweet-avator" src="{{avator}}"></image>
-      <view class="tweet-name">{{userName}}</view>
+      <image class="tweet-avator" wx:if="{{activeIndex != 0}}" src="{{avator}}"/>
+      <view class="{{activeIndex == 0? 'tweet-name tweet-title': 'tweet-name'}}">{{userName? userName : title}}</view>
     </view>
     <text class="tweet-descrption">{{content}}</text>
     <view class="operate">
@@ -10,24 +10,26 @@
       <image class="operate-image" src="../../resourse/comment.png"/>
     </view>
     <view class="divider"></view>
-    <view class="comments-container" wx:if="{{showComment}}">
-      <view class="comment" wx:for="{{comments}}" wx:key="{{index}}">
-        <view class="comment-username">{{item.userName}}:</view>
-        <view class="comment-content">{{item.content}}</view>
+    <view wx:if="{{activeIndex != 0}}">
+      <view class="comments-container" wx:if="{{showComment}}">
+        <view class="comment" wx:for="{{comments}}" wx:key="{{index}}">
+          <view class="comment-username">{{item.userName}}:</view>
+          <view class="comment-content">{{item.content}}</view>
+        </view>
       </view>
-    </view>
-    <view class="view-comment-container">
-      <view class="touch-comment" bindtap="getComment" data-postid="{{postId}}" data-tweetindex="{{index}}">    
-        <image class="{{showComment? 'arrowDown-image rotate-arrowDown' : 'arrowDown-image'}}" src = "../../resourse/arrowDown.png"/>
-        <view class="view-comment">{{showComment? '收起评论': '查看评论'}}</view>
+      <view class="view-comment-container">
+        <view class="touch-comment" bindtap="getComment" data-postid="{{postId}}" data-tweetindex="{{index}}">    
+          <image class="{{showComment? 'arrowDown-image rotate-arrowDown' : 'arrowDown-image'}}" src = "../../resourse/arrowDown.png"/>
+          <view class="view-comment">{{showComment? '收起评论': '查看评论'}}</view>
+        </view>
       </view>
+      <form bindsubmit="comment">
+        <! --<switch class="switch" name="anonymous" type="checkbox" checked="false">匿名评论</switch>
+        -->
+        <input type="text" name="inputVal" class="tweet-input" value="{{commentInput}}" placeholder="评论" placeholder-class="tweet-placeholder">
+          <button plain data-postid="{{postId}}" style="border: 0px;color:#017bf9;" class="comment-btn" form-type="submit" data-tweetindex="{{index}}">发表</button>
+        </input>
+      </form>
     </view>
-    <form bindsubmit="comment">
-      <! --<switch class="switch" name="anonymous" type="checkbox" checked="false">匿名评论</switch>
-       -->
-      <input type="text" name="inputVal" class="tweet-input" placeholder="评论" placeholder-class="tweet-placeholder">
-        <button plain data-postid="{{postId}}" style="border: 0px;color:#017bf9;" class="comment-btn" form-type="submit">发表</button>
-      </input>
-    </form>
   </view>
 </template>

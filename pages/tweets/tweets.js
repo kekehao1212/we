@@ -45,10 +45,11 @@ Page({
         })
       }
       let temp = this.data.tweets
+      arr.reverse()
       temp[0] = arr
       this.setData({
         tweets: temp
-      })
+      })    
       console.log('推送',arr)
     })
     
@@ -68,15 +69,17 @@ Page({
           userId: item.post.userId,
           anonymous: item.post.anonymous,
           title: item.title,
-          postId: item.post.id
+          postId: item.post.id,
+          commentInput: ''
         })
       }
       let temp = this.data.tweets
+      arr.reverse()
       temp[1] = arr
       this.setData({
         tweets: temp
       })
-      console.log('树洞',arr)
+      console.log('树洞',temp[1])
     })
     
     //获取关注文章
@@ -94,10 +97,13 @@ Page({
           userName: item.post.user.name,
           userId: item.post.user.id,
           anonymous:item.post.anonymous,
-          postId: item.post.id
+          postId: item.post.id,
+          commentInput: '',
+          title: item.post.title
         })
       }
       let temp = this.data.tweets
+      arr.reverse()
       temp[2] = arr
       this.setData({
         tweets: temp
@@ -117,8 +123,10 @@ Page({
   },
 
   comment: function (e) {
+    console.log(e)
     let postId = e.detail.target.dataset.postid
     let inputVal = e.detail.value.inputVal
+    let tweetIndex = e.detail.target.dataset.tweetindex
     we.request({
       url: `${url.domain}/api/posts/${postId}/comments`,
       method: 'POST',
@@ -128,7 +136,19 @@ Page({
       },
       header:app.globalData.header
     }).then(res => {
-      console.log(res)
+      if (res.statusCode === 201) {
+        var temp = this.data.tweets
+        console.log(tweetIndex)
+        temp[this.data.activeIndex][tweetIndex].commentInput = ''
+        this.setData({
+          tweets: temp
+        })
+        console.log(res)
+        wx.showModal({
+          title: '评论成功',
+          showCancel: false
+        })
+      }
     })
   },
   
