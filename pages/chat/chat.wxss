@@ -135,10 +135,13 @@ page {
 }
 
 .input {
-  width: 89%;
-  font-size: 16px;
-  border-radius: 10rpx;
-  padding: 10rpx 5rpx;
+  width:100%;
+  font-size:16px;
+  border-radius:10rpx;
+  margin:5px 2px;
+  position:relative;
+  padding-right:90rpx;
+  box-sizing:border-box;
 }
 
 .send {
@@ -146,11 +149,9 @@ page {
   color:#017bf9;
   font-size:16px;
   right:10rpx;
-  height:2.0rem;
-  padding:10rpx 0;
+  height:1.4rem;
   top:0;
-  line-height:2.0rem;
-  
+  line-height:1.4rem;
 }
 
 .footer {
@@ -177,4 +178,20 @@ page {
 .audio {
   border-right: 1px solid black;
   border-radius: 50%;
+}
+
+.slide-container{
+  height: 60px;
+  overflow: hidden;
+  transition: height 0.75s;
+}
+.hidePitch {
+  height: 0;
+}
+.description {
+  display: flex;
+  font-size: 14px;
+  margin: 0 30rpx;
+  color: #c5d0d4;
+  justify-content: space-between;
 }

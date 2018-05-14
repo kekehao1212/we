@@ -35,14 +35,16 @@ Page({
       type: 'rec'
     }, {
       avator: '../../resourse/img.png',
-      content: '        ',
+      content: '',
       type: 'rec'
     }],
-    cursorSpacing: null
+    cursorSpacing: null,
+    showPitchControl: false
   },
   recorderManager: null,
   startRecord: false,
   innerAudioContext: null,
+  pitch: 0,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -60,7 +62,7 @@ Page({
         name:'audio',
         formData: {
           g_userid: app.globalData.sessionId,
-          pitch: 3
+          pitch: this.pitch
         }
       }).then(res => {
         this.innerAudioContext.src = `https://transform.acoder.me/fetchtrans/${res.data}.wav`
@@ -68,7 +70,20 @@ Page({
       })
     })
   },
-
+  pitchToggle: function () {
+    if (this.data.showPitchControl) {
+      this.setData({
+        showPitchControl: false
+      })
+    } else {
+      this.setData({
+        showPitchControl: true
+      })
+    }
+  },
+  changePitch: function (e) {
+    this.pitch = e.detail.value
+  },
   getRecord: function () {
     if (this.startRecord) {
       wx.hideLoading()

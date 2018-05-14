@@ -10,14 +10,30 @@
   </view>
 </view>
 <view class="input-container">
-  <input bindfocus="focus"  cursor-spacing="120" value="独立思考asssssssss独立思考减肥老师的课减肥离开圣诞节昆仑山的肌肤ois多久哦日耳曼ssssssssssssssssssssssssssssssssssssssssss角度foi圣诞节福利的事几点送iaf精神的理解看来是大家来看放假打算离的睡觉啊了" class="input"  maxlength="-1" fixed  show-confirm-bar=""/>
-  <view class="send">
-  发送
+  <view class="slide-container {{showPitchControl? '': 'hidePitch'}} ">
+    <slider min="-10" max="10" block-size="20"bindchange="changePitch">
+    </slider>
+    <view class="description">
+      <view>
+        变粗
+      </view>
+      <view>
+        不变
+      </view>
+      <view>
+        变细
+      </view>
+    </view>
   </view>
+  <input bindfocus="focus"  cursor-spacing="120" value="独立思考asssssssss独立思考减肥老师的课减肥离开圣诞节昆仑山的肌肤ois多久哦日耳曼ssssssssssssssssssssssssssssssssssssssssss角度foi圣诞节福利的事几点送iaf精神的理解看来是大家来看放假打算离的睡觉啊了" class="input"  maxlength="-1" fixed  show-confirm-bar="">
+    <view class="send">
+      发送
+    </view>
+  </input>
   <view class="divider"></view>
   <view class="operate-container">
     <image class="operate-sprite" bindtap="getRecord" src="../../resourse/micro.png"></image>
-    <image class="operate-sprite" src="../../resourse/pitch.png"></image>
+    <image class="operate-sprite" bindtap="pitchToggle" src="../../resourse/pitch.png"></image>
     <image class="operate-sprite" src="../../resourse/camera.png"></image>
   </view>
 </view>
