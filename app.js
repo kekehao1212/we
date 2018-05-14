@@ -4,7 +4,6 @@ const regeneratorRuntime = require('./libs/regenerator-runtime/runtime-module.js
 import url from './utils/url/index.js'
 App({
   onLaunch: function() {
-    this.loginInit()
   },
 
   loginInit: async function() {
@@ -30,6 +29,12 @@ App({
       we.navigateTo({
         url: './pages/signUp/signUp'
       })
+    }
+  },
+
+  onShow:function () {
+    if (!this.globalData.user) {
+      this.loginInit()
     }
   },
 

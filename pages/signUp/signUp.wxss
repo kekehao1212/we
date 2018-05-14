@@ -32,3 +32,9 @@
 .userAvator{
   width: 300rpx;
 }
+.signup-button {
+  background-color: limegreen;
+  width : 400rpx;
+  color: white;
+  margin-top: 100rpx;
+}

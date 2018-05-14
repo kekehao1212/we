@@ -1,4 +1,3 @@
-
 function IllegalAPIException(name) {
   this.message = "No Such API [" + name + "]";
   this.name = 'IllegalAPIException';

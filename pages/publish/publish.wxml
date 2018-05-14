@@ -2,5 +2,5 @@
 <form bindsubmit="publish">
   <textarea placeholder="分享你的心情..." name="content" class="publish-textarea" show-confirm-bar="" auto-focus auto-height/>
   <switch checked type="checkbox" bindtap="switchChange"/>匿名发送
-  <button formType="submit">发表</button>
+  <button class="publish-btn" formType="submit">发表</button>
 </form>

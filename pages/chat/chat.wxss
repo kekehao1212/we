@@ -135,18 +135,22 @@ page {
 }
 
 .input {
-  width: 91%;
+  width: 89%;
   font-size: 16px;
   border-radius: 10rpx;
   padding: 10rpx 5rpx;
 }
 
 .send {
-  position: absolute;
-  bottom: 100rpx;
-  color: #017bf9;
-  font-size: 16px;
-  right: 10rpx;
+  position:absolute;
+  color:#017bf9;
+  font-size:16px;
+  right:10rpx;
+  height:2.0rem;
+  padding:10rpx 0;
+  top:0;
+  line-height:2.0rem;
+  
 }
 
 .footer {
@@ -169,4 +173,8 @@ page {
   margin-top: 10rpx;
   background-color: #c4c9cf;
   height: 1px;
+}
+.audio {
+  border-right: 1px solid black;
+  border-radius: 50%;
 }

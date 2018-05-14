@@ -24,8 +24,6 @@
         </view>
       </view>
       <form bindsubmit="comment">
-        <! --<switch class="switch" name="anonymous" type="checkbox" checked="false">匿名评论</switch>
-        -->
         <input type="text" name="inputVal" class="tweet-input" value="{{commentInput}}" placeholder="评论" placeholder-class="tweet-placeholder">
           <button plain data-postid="{{postId}}" style="border: 0px;color:#017bf9;" class="comment-btn" form-type="submit" data-tweetindex="{{index}}">发表</button>
         </input>

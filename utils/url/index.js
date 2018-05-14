@@ -10,7 +10,8 @@ export default {
   avator: `${domain}/api/users/_/avator`,
   domain: domain,
   follow: `${domain}/api/follows`,
-  notification: `${domain}/api/public-notifications`
+  notification: `${domain}/api/public-notifications`,
+  transform: 'https://transform.acoder.me/voicetrans.asp'
   // comment: `${url.domain}/api/posts/${postId}/comments`,
   // checkFollow: `${domain}/api/follows/followee${psyId}`
 }

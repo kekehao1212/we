@@ -17,7 +17,7 @@
   <view class="divider"></view>
   <view class="operate-container">
     <image class="operate-sprite" bindtap="getRecord" src="../../resourse/micro.png"></image>
-    <image class="operate-sprite" src="../../resourse/image.png"></image>
+    <image class="operate-sprite" src="../../resourse/pitch.png"></image>
     <image class="operate-sprite" src="../../resourse/camera.png"></image>
   </view>
 </view>

@@ -7,3 +7,8 @@
   min-height:400rpx;
   background-color: #ffffff;
 }
+.publish-btn {
+  background-color: limegreen;
+  width : 400rpx;
+  color: white;
+}

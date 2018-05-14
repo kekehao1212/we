@@ -7,5 +7,5 @@
   <label for="userName" class="userName-label">用户名
     <input type="text" auto-focus id="userName" class="userName-input" name="userName"/>
   </label>
-  <button formType="submit">确认</button>
+  <button class="signup-button" formType="submit">确认</button>
 </form>
