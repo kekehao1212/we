@@ -65,7 +65,7 @@ Page({
         arr.push({
           avator: `${url.domain}/api/users/${item.post.userId}/avator`,
           content: item.content,
-          userName: item.post.user.name,
+          userName: '匿名用户',
           userId: item.post.userId,
           anonymous: item.post.anonymous,
           title: item.title,

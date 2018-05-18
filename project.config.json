@@ -67,6 +67,12 @@
 					"name": "signUp",
 					"pathName": "pages/signUp/signUp",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "test",
+					"pathName": "pages/test/test",
+					"query": ""
 				}
 			]
 		}

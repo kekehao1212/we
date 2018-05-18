@@ -4,12 +4,12 @@
   <view class="name">{{user.name}}</view>
 </view>
 <view class="setting-container">
-  <view class="setting">
+  <navigator url="../test/test" class="setting">
     <image class="setting-sprite" src="../../resourse/test.png"/>
     <view class="setting-text">
       心理测试
     </view>
-  </view>
+  </navigator>
   <view class="setting">
     <image class="setting-sprite" src="../../resourse/favor.png"/>
     <view class="setting-text">

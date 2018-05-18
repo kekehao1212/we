@@ -37,11 +37,11 @@ page {
   font-size:14px;
   overflow: hidden;
   text-overflow: ellipsis;
-  height:120rpx;
-  -webkit-line-clamp:3;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   word-break:break-all;
+  white-space:pre-wrap;
 }
 .arrow-img {
   height: 20rpx;

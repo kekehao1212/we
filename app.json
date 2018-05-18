@@ -6,7 +6,8 @@
     "pages/psy/psy",
     "pages/chat/chat",
     "pages/publish/publish",
-    "pages/signUp/signUp"
+    "pages/signUp/signUp",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

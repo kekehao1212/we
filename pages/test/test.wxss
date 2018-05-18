@@ -1,0 +1,43 @@
+/* pages/test/test.wxss */
+.label {
+  display: block;
+  margin: 10rpx 0 ;
+}
+.question-container {
+  margin: 20rpx;
+}
+.question-header{
+  text-align:center;
+  margin-bottom: 80rpx;
+}
+.question {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 30rpx;
+}
+.radio-group {
+  font-size: 16px;
+}
+.radio {
+
+}
+.btn-container {
+  display: flex;
+  margin-top:80rpx;
+}
+.test-result-title {
+  text-align: center;
+  font-size: 16px;
+}
+.result-image {
+  margin: auto;
+  width: 600rpx;
+}
+.result-content {
+  font-size: 16px;
+  line-height: 24px;
+}
+.image-container {
+  text-align:center;
+  margin: 30rpx;
+}

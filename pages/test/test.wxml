@@ -1,0 +1,35 @@
+<!--pages/test/test.wxml-->
+<view class="question-container">
+  <view class="question-header">
+    大学生恋爱观--测测你的爱情观有多成熟
+  </view>
+  <view wx:if="{{!showResult}}">
+    <view class="question">{{questions[questionIndex].title}}</view>
+
+    <radio-group class="radio-group" bindchange="radioChange" wx:if="{{questionIndex % 2 == 0}}">
+      <label class="label" wx:for="{{questions[questionIndex].options}}" wx:key="{{index}}">
+        <radio value="{{index}}" checked="{{chceked[index]}}" class="radio"/>{{item}}
+      </label>
+    </radio-group>
+    
+    <radio-group class="radio-group" bindchange="radioChange" wx:else>
+      <label class="label" wx:for="{{questions[questionIndex].options}}" wx:key="{{index}}">
+        <radio value="{{index}}" checked="{{chceked[index]}}" class="radio"/>{{item}}
+      </label>
+    </radio-group>
+
+    <view class="btn-container">
+      <button type="default" class="btn" bindtap="preQuestion">上一题</button>
+      <button type="default" class="btn" bindtap="nextQuestion">下一题</button>
+    </view>
+  </view>
+
+  <view wx:else>
+    <view class="test-result-title">测试结果</view>
+    <view class="image-container">
+      <image class="result-image" src="{{results[answer].photoSrc}}" mode="widthFix"/>
+    </view>
+    <view class="result-content">{{results[answer].content}}</view>
+  </view>
+</view>
+
