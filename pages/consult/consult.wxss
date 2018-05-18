@@ -37,7 +37,7 @@ page {
   font-size:14px;
   overflow: hidden;
   text-overflow: ellipsis;
-  height:150rpx;
+  height:120rpx;
   -webkit-line-clamp:3;
   -webkit-box-orient: vertical;
   display: -webkit-box;

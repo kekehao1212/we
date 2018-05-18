@@ -36,7 +36,7 @@
 
 .tweet-content{
   background: #fefefd;
-  padding: 30rpx 10rpx 20rpx 10rpx;
+  padding: 30rpx 10rpx 20rpx 20rpx;
   margin: 15rpx 0 15rpx 0;
 }
 .tweet-content-header {

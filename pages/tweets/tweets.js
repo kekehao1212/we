@@ -92,7 +92,7 @@ Page({
       let arr = []
       for (let item of results) {
         arr.push({
-          avator: item.avator,
+          avator: `${url.domain}/api/users/${item.id}/avator?c=1`,
           content: item.content,
           userName: item.post.user.name,
           userId: item.post.user.id,
@@ -151,7 +151,18 @@ Page({
       }
     })
   },
-  
+  likeToggle: function (e) {
+    let tweetIndex = e.currentTarget.dataset.tweetindex
+    var temp = this.data.tweets
+    if (temp[this.data.activeIndex][tweetIndex].liked) {
+      temp[this.data.activeIndex][tweetIndex].liked = false
+    } else {
+      temp[this.data.activeIndex][tweetIndex].liked = true
+    }
+    this.setData({
+      tweets: temp
+    })
+  },
   getComment: function (e) {
     var temp = this.data.tweets
     let postId = e.currentTarget.dataset.postid

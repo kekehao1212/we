@@ -9,11 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    psy: {
-      name: '小李子',
-      avator: '../../resourse/img.png',
-      about: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    },
+    psy: {},
     following: null,
     displayFollowAnimation: false
   },
@@ -26,7 +22,6 @@ Page({
       psy: app.globalData.psy
     })
     let id = this.data.psy.id
-    console.log(id)
     let {data:{following, id: followingId}} = await we.request({
       url: `${url.domain}/api/follows/followee/${id}`,
       header: app.globalData.header

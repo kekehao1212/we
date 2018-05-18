@@ -27,7 +27,7 @@ App({
     }
     if (statusCode === 404) {
       we.navigateTo({
-        url: './pages/signUp/signUp'
+        url: '/pages/signUp/signUp'
       })
     }
   },

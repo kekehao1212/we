@@ -6,14 +6,14 @@
   </view>  
 </view>
 
-<view class="content-container" wx:for="{{psys[activeIndex]}}" wx:key="index">
+<view class="content-container" wx:for="{{psys[activeIndex]}}" wx:key="index" bindtap="toPsy" data-index="{{index}}">
   <image src="{{item.avator}}" class="avator"/>
   <view class="content">
     <view class="psy-name-container">
       <view class="psy-name">
         {{item.user.name}}
       </view>
-      <view class="psy-more" bindtap="toPsy" data-index="{{index}}">
+      <view class="psy-more" >
         详情
         <image class="arrow-img" src="../../../resourse/arrowRight.png" />
       </view>

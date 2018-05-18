@@ -37,18 +37,41 @@ Page({
       })
       return
     }
-    var {statusCode:nameStatusCode} = await we.request({
-      url: url.register,
-      method: 'POST',
-      header: {WX_SESSION_ID: app.globalData.sessionId},
-      data: {name: userName}
-    })
-    var {statusCode: avatorStatusCode} = await we.uploadFile({
-      url: url.avator,
-      filePath: this.data.avator,
-      name: 'avator',
-      header: app.globalData.header
-    })
+    try {
+      var {statusCode:nameStatusCode} = await we.request({
+        url: url.register,
+        method: 'POST',
+        header: {WX_SESSION_ID: app.globalData.sessionId},
+        data: {name: userName}
+      })
+
+      if (nameStatusCode >= 400) {
+        throw "未知错误";
+      } 
+      var {statusCode: avatorStatusCode} = await we.uploadFile({
+        url: url.avator,
+        filePath: this.data.avator,
+        name: 'avator',
+        header: app.globalData.header
+      }).then(res => {
+        we.showModal({
+          title:'注册成功',
+          showCancel:false
+        }).then((res)=> {
+          if (res.confirm) {
+            we.switchTab({
+              url: '../consult/consult',
+            })
+          }
+        })
+      })
+    } catch (err) {
+      we.showModal({
+        title:'注册失败',
+        content: err,
+        showCancel: false
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

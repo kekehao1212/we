@@ -11,51 +11,50 @@ Page({
   data: {
     message: [{
       avator: '../../resourse/img.png',
-      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
+      content: '您好有什么要咨询的呢？',
       type: 'rec'
-    }, {
+    },{
       avator: '../../resourse/img.png',
-      content: '达肥红啊好好',
+      content: '老师我最近遇到一些问题',
       type: 'sen'
-    }, {
-      avator: '../../resourse/img.png',
-      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
-      type: 'rec'
-    }, {
-      avator: '../../resourse/img.png',
-      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
-      type: 'rec'
-    }, {
-      avator: '../../resourse/img.png',
-      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
-      type: 'rec'
-    }, {
-      avator: '../../resourse/img.png',
-      content: '好后来看房间里看电视呢发达就是离开发来看电视剧弗兰克的数据来看路上看到减肥红啊好好',
-      type: 'rec'
-    }, {
-      avator: '../../resourse/img.png',
-      content: '',
-      type: 'rec'
     }],
+    inputVal: '',
+    consultImage: '../../resourse/img.png',
     cursorSpacing: null,
-    showPitchControl: false
+    showPitchControl: false,
+    consultName: ''
   },
   recorderManager: null,
   startRecord: false,
   innerAudioContext: null,
   pitch: 0,
+  userImage: null,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData.psy)
+    if (!app.globalData.user.image) {
+      app.globalData.user.image = 
+      `${url.domain}/api/users/_/avator?sessionId=${app.globalData.sessionId}`
+      this.setData({
+        consultName: app.globalData.psy.user.name,
+        userImage: `${url.domain}/api/users/_/avator?sessionId=${app.globalData.sessionId}`,
+        consultImage: `${url.domain}/api/users/${app.globalData.psy.id}/avator?c=1`
+      })
+    } else {
+      this.setData({
+        consultName: app.globalData.psy.user.name,
+        userImage: `${url.domain}/api/users/_/avator?sessionId=${app.globalData.sessionId}`,
+        consultImage: `${url.domain}/api/users/${app.globalData.psy.id}/avator?c=1`
+      })
+    }
+
     this.recorderManager = wx.getRecorderManager()
     this.innerAudioContext = wx.createInnerAudioContext()
     this.innerAudioContext.autoplay = true
     this.recorderManager.onStop((res) => {
-      console.log(res)
       this.innerAudioContext.autoplay = true
-      this.innerAudioContext.src = res.tempFilePath
       we.uploadFile({
         url: url.transform,
         filePath: res.tempFilePath,
@@ -65,8 +64,16 @@ Page({
           pitch: this.pitch
         }
       }).then(res => {
-        this.innerAudioContext.src = `https://transform.acoder.me/fetchtrans/${res.data}.wav`
         console.log(res)
+        let tempmessage = this.data.message
+        tempmessage.push({
+          type: 'sen',
+          audio: `https://transform.acoder.me/fetchtrans/${res.data}.wav`
+        })
+        this.setData({
+          message: tempmessage
+        })
+        // this.innerAudioContext.src = `https://transform.acoder.me/fetchtrans/${res.data}.wav`
       })
     })
   },
@@ -84,6 +91,23 @@ Page({
   changePitch: function (e) {
     this.pitch = e.detail.value
   },
+  send: function () {
+
+    let tempmessage = this.data.message
+    tempmessage.push({
+      type: 'sen',
+      content: this.data.inputVal
+    })
+    this.setData({
+      message: tempmessage,
+      inputVal: ''
+    })
+  },
+  input: function (e) {
+    this.setData({
+      inputVal: e.detail.value
+    })
+  },
   getRecord: function () {
     if (this.startRecord) {
       wx.hideLoading()
@@ -91,7 +115,7 @@ Page({
       this.recorderManager.stop()
     } else {
       wx.showLoading({
-        title: '请将说话'
+        title: '正在录音'
       })
       this.startRecord = true
       this.recorderManager.start({
@@ -100,8 +124,10 @@ Page({
     }
   },
 
-  playAudio: function () {
-    innerAudioContext.src = ''
+  playAudio: function (e) {
+    if (e.currentTarget.dataset.audio) {
+      this.innerAudioContext.src = e.currentTarget.dataset.audio
+    }
   },
 
   /**

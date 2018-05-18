@@ -21,35 +21,7 @@ Page({
         isActive: false,
       }
     ],
-    psys: [[{
-      avator:'../../resourse/img.png',
-      name: '小李子',
-      descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    }, {
-      avator:'../../../resourse/img.png',
-      name: '小李子',
-      descrption: 'xxx 77x fdsfs\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-    }],[
-      {
-        avator:'../../resourse/img.png',
-        name: '小李子2',
-        descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      }, {
-        avator:'../../../resourse/img.png',
-        name: '小李子2',
-        descrption: 'xxx 77x 阿萨德的分手费\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      }
-    ],[
-      {
-        avator:'../../resourse/img.png',
-        name: '小李子3',
-        descrption: 'xxx 77x xxxxxxxxx\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      }, {
-        avator:'../../../resourse/img.png',
-        name: '小李子3',
-        descrption: 'xxx 77x 规范的股份的规定发给对方\n\r xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-      }
-    ]]
+    psys: []
   },
 
   /**
@@ -61,10 +33,11 @@ Page({
       url: url.consult,
       header: {WX_SESSIONID: app.globalData.sessionId}
     })
+    console.log(results)
     let psys = [[],[],[]]
     results.map(item => { 
-      item.avator = `${url.domain}/api/users/${item.id}/avator`
-      psys[item.type].push(item)
+      item.avator = `${url.domain}/api/users/${item.id}/avator?c=1`
+      psys[item.type-1].push(item)
     })
     this.setData({
       psys: psys
@@ -82,7 +55,8 @@ Page({
     })
   },
   toPsy: function (e) {
-    let index = e.target.dataset.index
+    console.log(e)
+    let index = e.currentTarget.dataset.index
     app.globalData.psy = this.data.psys[this.data.activeIndex][index]
     console.log(app.globalData.psy)
     wx.navigateTo({

@@ -6,7 +6,7 @@
     </view>
     <text class="tweet-descrption">{{content}}</text>
     <view class="operate">
-      <image class="operate-image" src="../../resourse/like.png"/>
+      <image class="operate-image" data-tweetindex="{{index}}" bindtap="likeToggle" src="{{liked? '../../resourse/liked.png' : '../../resourse/like.png'}}"/>
       <image class="operate-image" src="../../resourse/comment.png"/>
     </view>
     <view class="divider"></view>

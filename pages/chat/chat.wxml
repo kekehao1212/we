@@ -1,12 +1,16 @@
 <!--pages/chat/chat.wxml-->
 <view class="header">
-  <view class="name">小李子</view>
+  <view class="name">{{consultName}}</view>
   <view class="endChat">结束咨询</view>
 </view>
 <view class="message-container">
   <view class="{{item.type+'-message-container'}}" wx:for="{{message}}" wx:key="{{item.index}}">
-    <image class="avator" src="{{item.avator}}"/>
-    <text class="{{item.type + '-message'}}">{{item.content}}</text>
+    <image class="avator" src="{{item.type=='sen'? userImage:consultImage}}"/>
+    <view class="{{item.type + '-message'}}" bindtap="playAudio" data-audio="{{item.audio}}">
+      <text>{{item.content}}</text>
+      <view class="audio {{item.type+'-audio'}}" wx:if="{{item.audio}}">
+      </view>
+    </view>
   </view>
 </view>
 <view class="input-container">
@@ -15,18 +19,18 @@
     </slider>
     <view class="description">
       <view>
-        变粗
+        声调变粗
       </view>
       <view>
         不变
       </view>
       <view>
-        变细
+        声调变细
       </view>
     </view>
   </view>
-  <input bindfocus="focus"  cursor-spacing="120" value="独立思考asssssssss独立思考减肥老师的课减肥离开圣诞节昆仑山的肌肤ois多久哦日耳曼ssssssssssssssssssssssssssssssssssssssssss角度foi圣诞节福利的事几点送iaf精神的理解看来是大家来看放假打算离的睡觉啊了" class="input"  maxlength="-1" fixed  show-confirm-bar="">
-    <view class="send">
+  <input cursor-spacing="120" bindinput="input" value="{{inputVal}}" class="input"  maxlength="-1" fixed  show-confirm-bar="">
+    <view class="send" bindtap="send">
       发送
     </view>
   </input>

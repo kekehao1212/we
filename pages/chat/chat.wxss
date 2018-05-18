@@ -1,4 +1,4 @@
-/* pages/chat/chat.wxss */
+  /* pages/chat/chat.wxss */
 
 page {
   background-color: #f2f3f5;
@@ -50,9 +50,8 @@ page {
 }
 
 .message-container {
-  margin-top: 60rpx;
+  margin-top: 120rpx;
   margin-bottom: 200rpx;
-  display: inline-block;
 }
 
 .rec-message {
@@ -194,4 +193,52 @@ page {
   margin: 0 30rpx;
   color: #c5d0d4;
   justify-content: space-between;
+}
+.audio {
+  height:30rpx;
+  width:30rpx;
+  border:2px solid #a3a2a2;
+  border-color:transparent transparent transparent #a3a2a2;
+  border-radius:50%;
+  position:relative;
+  margin:0;
+  left:20rpx;
+}
+
+.rec-audio {
+  height:30rpx;
+  width:30rpx;
+  border:2px solid #a3a2a2;
+  border-color:transparent transparent transparent #a3a2a2;
+  border-radius:50%;
+  position:relative;
+  margin:0;
+  left:-20rpx;
+  transform:rotate(180deg);
+}
+
+.audio::after {
+  display: block;
+  top: -14rpx;
+  left: -14rpx;
+  position: absolute;
+  content: '';
+  height: 50rpx;
+  width: 50rpx;
+  border: 2px solid #a3a2a2;
+  border-color: transparent transparent transparent #a3a2a2;
+  border-radius: 50%;
+}
+
+.audio::before {
+  display: block;
+  top: 6rpx;
+  left: 6rpx;
+  position: absolute;
+  content: '';
+  height: 10rpx;
+  width: 10rpx;
+  border: 2px solid #a3a2a2;
+  border-color: transparent transparent transparent #a3a2a2;
+  border-radius: 50%;
 }
